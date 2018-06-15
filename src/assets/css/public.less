@@ -1,0 +1,63 @@
+@main: #278e42;
+.bgdiff(@bgImg) {
+  background-image: url(@bgImg);
+}
+
+.bgimg(@url) {
+  .bgdiff("@{url}@2x.png");
+  @media(-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+    .bgdiff("@{url}@3x.png");
+  }
+}
+
+.main-color {
+  color: @main
+}
+
+*,
+p,
+ul {
+  margin: 0;
+  padding: 0
+}
+
+* {
+  box-sizing: content-box
+}
+
+#app {
+  // overflow-y: auto;
+  // .container{}
+}
+
+.router-view {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 500ms cubic-bezier(0.55, 0, 0.1, 1);
+  backface-visibility: hidden;
+}
+
+.index {
+  max-width: 10rem;
+  margin: 0 auto;
+  height: 100%;
+  font-size: 0.426667rem;
+  display: flex;
+  background-color: #f7f7f7;
+  position: relative;
+  overflow: hidden;
+}
+
+.page {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  &-view {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+  }
+}
