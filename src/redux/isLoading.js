@@ -1,4 +1,3 @@
-
 import { LOADING_STATE } from "./action";
 
 export default function isLoading(isLoading = false, action) {
