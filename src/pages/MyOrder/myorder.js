@@ -14,19 +14,46 @@ class MyOrder extends React.Component{
   constructor(){
     super()
     this.state = {
-      active:0
+      active:0,
+      orderList:[],
+      page:1,
+      screen:''
     }
   }
   componentDidMount(){
-
+    this.getDate(1)
   }
   tabActive(key){
     this.setState({
-      active:key
+      active:key,
+      ...this.stateInit()
+    },()=>{
+      this.getDate(1)
     })
+  }
+  stateInit(){
+    return {
+      orderList:[],
+      page:1,
+      screen:''
+    }
   }
   search(value){
     console.log(value)
+  }
+  getDate(page = 1,cb=()=>{}){
+    let data = { page: page, orderType: this.state.active+1, screen: this.state.screen };
+    console.log(data)
+    window.$http(window.$api.orderList, data).then(res => {
+        if (!res.data.data.orderList.length) { 
+          this.setState({
+            page: this.state.page > 1 ? this.state.page - 1 : 1
+          })
+        }
+        this.setState({
+          orderList:page <= 1?res.data.data.orderList:this.state.orderList.push(...res.data.data.orderList)
+        },()=>{cb(res)})
+    })
   }
   render(){
     return (

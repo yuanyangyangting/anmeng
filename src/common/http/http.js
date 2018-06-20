@@ -1,6 +1,7 @@
 import axios from 'axios'
 import qs from 'qs'
-
+import store from '../../redux/store'
+import { loadingState } from '../../redux/action'
 // 请求拦截
 axios.interceptors.request.use(
     config => {
@@ -38,6 +39,7 @@ const config = {
     // qs.stringify(data)
 }
 const httpServer = (opt, data, isQs = true) => {
+    store.dispatch(loadingState(true));
     opt = Object.assign({}, config, opt);
     let {
         method,
@@ -57,6 +59,7 @@ const httpServer = (opt, data, isQs = true) => {
             .then(res => {
                 successState(res)
                 resolve(res)
+                store.dispatch(loadingState(false))
             })
             .catch(response => {
                 errorState(response)

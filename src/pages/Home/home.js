@@ -1,8 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 import './home.less'
-import { Carousel, Divider } from 'antd'
+import { Carousel } from 'antd'
+import { connect } from 'react-redux'
 import ProList from '../../components/ProList/ProList.js'
+import PropTypes from 'prop-types';
+import { loadingState } from "../../redux/action";
 // import hot from '../../assets/img/home/hot.png'
 class Home extends React.Component{
   constructor(props){
@@ -18,7 +21,6 @@ class Home extends React.Component{
       let list = [];
       let i = {};
       if(res.data.state){
-        console.log(data)
         data.slideList.forEach((item,index)=>{
           i['url'] = item.forwardUrl;
           i['img'] = item.url;
@@ -28,7 +30,7 @@ class Home extends React.Component{
         this.setState({
           productList:data.hotProdList,
           list:list
-        })
+        });
       }
     })
   }
@@ -81,4 +83,18 @@ class Home extends React.Component{
   }
 }
 
-export default Home
+// export default Home
+Home.contextTypes = { store: PropTypes.object.isRequired }
+
+const mapDispatchToProps=(dispatch,ownProps)=>{
+  return {
+    loading:()=>dispatch(loadingState(true)),
+    unLoading:()=>dispatch(loadingState(false)),
+  }
+};
+
+const mapStateToProps = state =>{
+  return  {isLoading:state.isLoading}
+}
+
+export default connect(null,mapDispatchToProps)(Home)

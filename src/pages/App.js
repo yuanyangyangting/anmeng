@@ -4,6 +4,10 @@ import myOrder from './MyOrder/myorder.js';
 import userCenter from './UserCenter/usercenter.js';
 import NavBar from '../components/Navbar/nav'
 import {Route, Redirect, Switch} from 'react-router-dom'
+// import { connect } from 'react-redux'
+
+// import PropTypes from 'prop-types';
+
 let navList = [
     {title:'首页',url:'/home'},
     {title:'订单',url:'/myOrder'},
@@ -11,7 +15,7 @@ let navList = [
 ]
 class App extends React.Component{
   constructor(props){
-      super(props);
+      super(props)
       this.state={
           path:'/home'
       };
@@ -36,12 +40,11 @@ class App extends React.Component{
                 <Route path="/myOrder" component={myOrder}></Route>
                 <Route path="/userCenter" component={userCenter}></Route>
                 <Redirect to="/home" />
-                </Switch>
+            </Switch>
             </div>
             <NavBar active={this.state.path} navList={navList}></NavBar>
         </div>
       )
   }
 }
-
 export default App;

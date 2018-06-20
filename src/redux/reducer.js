@@ -1,24 +1,8 @@
 import { combineReducers } from 'redux';
+import isLoading from './isLoading'
+import updateToken from './token'
 
-import { CHANGE_PAGE } from "./action";
-
-export const initState = {
-    info: {
-        id:0,
-        name:'ddd',
-        bgimg:'',
-        url:'',
-    }
-  }
-
-export let reducers=combineReducers({
-    info(state=initState,action){
-        switch(action.type){
-            case CHANGE_PAGE:
-                let newInfo=action.info;
-                return newInfo;
-            break;
-            default:return state;
-        }
-    }
-  })
+export const reducers = combineReducers({
+    isLoading:isLoading,
+    token:updateToken
+})

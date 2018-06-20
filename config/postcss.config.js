@@ -5,7 +5,7 @@ module.exports = {
     }),
 
     require("postcss-import")({
-      path: ["src/",'node_modules/']
+      path: ["src/"]
     }),
 
     require('postcss-px2rem')({
