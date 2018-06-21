@@ -2,18 +2,18 @@ import './assets/css/reset.less';
 import 'lib-flexible/flexible.js'
 import React from 'react';
 import ReactDOM from 'react-dom';
-import http from './common/http/http'
-import api from './common/http/api'
-import './common/mock/mock';
+import http from './common/http/http.js'
+import api from './common/http/api.js'
+import './common/mock/mock.js';
 import { Route, HashRouter as Router , Switch, Redirect} from 'react-router-dom';
 import { Provider } from 'react-redux'; 
-import store from './redux/store';
-import Loading from './components/Loading/Loading';
-import App from './pages/App';
-import allproduct from './pages/AllProduct/allproduct';
+import store from './redux/store.js';
+import Loading from './components/Loading/Loading.jsx';
+import App from './pages/App.jsx';
+import allproduct from './pages/AllProduct/allproduct.jsx';
+
 // import initReactFastclick from 'react-fastclick';
 // initReactFastclick();
-
 // store.subscribe(() =>{
 //     console.log(store.getState())
 // });
@@ -28,7 +28,6 @@ const routes = (
             <Switch>
                 <Route path='/allproduct' component={allproduct} />
                 <Route path='/' component={App} />
-                <Redirect to="/home" />
             </Switch>
         </Router>
         </div>

@@ -1,54 +1,54 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './home.less'
-import { Carousel,WingBlank  } from 'antd-mobile'
+import { Carousel, WingBlank } from 'antd-mobile'
 import { connect } from 'react-redux'
-import ProList from '../../components/ProList/ProList.js'
+import ProList from '../../components/ProList/ProList.jsx'
 import PropTypes from 'prop-types'
-import { loadingState } from "../../redux/action"
+import { loadingState } from "../../redux/action.js"
 
-class Home extends React.Component{
-  constructor(props){
+class Home extends React.Component {
+  constructor(props) {
     super(props)
     this.state = {
-      list:[],
+      list: [],
       productList: []
     }
   }
-  componentDidMount(){
-    window.$http(window.$api.getHome,{}).then(res=>{
+  componentDidMount() {
+    window.$http(window.$api.getHome, {}).then(res => {
       let data = res.data.data;
       let list = [];
       let i = {};
-      if(res.data.state){
-        data.slideList.forEach((item,index)=>{
+      if (res.data.state) {
+        data.slideList.forEach((item, index) => {
           i['url'] = item.forwardUrl;
           i['img'] = item.url;
           i['title'] = '';
           list.push(i)
         })
         this.setState({
-          productList:data.hotProdList,
-          list:list
+          productList: data.hotProdList,
+          list: list
         });
       }
     })
   }
-  render(){
+  render() {
     return (
       <div className="home router-view">
         <div className="swiper-bar">
           <div className="btn-login" v-if="!isLogin">
             <Link to="/login">登录</Link>
           </div>
-          <Carousel 
-          autoplay
-          infinite
+          <Carousel
+            autoplay
+            infinite
           >
-            {this.state.list.map((item,key)=>(
+            {this.state.list.map((item, key) => (
               <div className="slider-content" key={key}>
-                 {/* <img src={item.img} width="100%" height="3.68rem" /> */}
-                 <div className="content-img" style={{backgroundImage:`url(${item.img})`}}></div>
+                {/* <img src={item.img} width="100%" height="3.68rem" /> */}
+                <div className="content-img" style={{ backgroundImage: `url(${item.img})` }}></div>
               </div>
             ))}
           </Carousel>
@@ -76,10 +76,10 @@ class Home extends React.Component{
           </div>
         </section>
         <section className="home--list">
-        <div className="home--list__title">
-          <h3>热销产品</h3>
-        </div>
-        <ProList productList={this.state.productList}></ProList>
+          <div className="home--list__title">
+            <h3>热销产品</h3>
+          </div>
+          <ProList productList={this.state.productList}></ProList>
         </section>
       </div>
     )
@@ -89,15 +89,15 @@ class Home extends React.Component{
 // export default Home
 Home.contextTypes = { store: PropTypes.object.isRequired }
 
-const mapDispatchToProps=(dispatch,ownProps)=>{
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    loading:()=>dispatch(loadingState(true)),
-    unLoading:()=>dispatch(loadingState(false)),
+    loading: () => dispatch(loadingState(true)),
+    unLoading: () => dispatch(loadingState(false)),
   }
 };
 
-const mapStateToProps = state =>{
-  return  {isLoading:state.isLoading}
+const mapStateToProps = state => {
+  return { isLoading: state.isLoading }
 }
 
-export default connect(null,mapDispatchToProps)(Home)
+export default connect(null, mapDispatchToProps)(Home)

@@ -8,8 +8,8 @@ const nav = (props) => {
       {props.navList.map((v, k) =>
         <li key={k} className={props.active === v.url ? 'list--item active' : 'list--item'}>
           <Link to={v.url}>
-          <div className="icon"></div>
-          <p>{v.title}</p>
+            <div className="icon"></div>
+            <p>{v.title}</p>
           </Link>
         </li>
       )}
@@ -22,6 +22,6 @@ nav.propTypes = {
 }
 
 nav.defaultProps = {
-  navList: [{ title: '首页',url:'/home'}],
+  navList: [{ title: '首页', url: '/home' }],
 }
 export default nav
