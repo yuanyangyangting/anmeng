@@ -1,6 +1,6 @@
 import React from 'react'
 import './Search.less'
-import {Icon} from 'antd'
+// import { Icon } from 'antd-mobile'
 import PropTypes from 'prop-types';
 class Search extends React.Component{
   constructor(props){
@@ -22,7 +22,7 @@ class Search extends React.Component{
       <div className="rx-search-box">
        <div className="from-group">
         <input type="search" name="rx-search" className="rx-search" onChange={this.handleChange.bind(this)} onKeyDown={this.handleKeyDown.bind(this)} placeholder={this.props.placeholder} />
-        <Icon type="search" />
+        <i className="iconfont icon-search"></i>
        </div>
     </div>
     )

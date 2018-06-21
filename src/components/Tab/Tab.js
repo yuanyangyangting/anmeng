@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 import './Tab.less'
 
 class Tab extends React.Component{
@@ -9,8 +9,9 @@ class Tab extends React.Component{
       sliderWidth:0,
       sliderLeft:0,
     }
-    this.sliderBarWidth = '1.333rem'; 
-    this.tabList = props.tabList
+    
+    this.tabList = this.props.tabList
+    this.sliderBarWidth = '1rem'; 
   }
   componentDidMount(){
     this.setState({

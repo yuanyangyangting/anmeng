@@ -5,11 +5,15 @@ import ReactDOM from 'react-dom';
 import http from './common/http/http'
 import api from './common/http/api'
 import './common/mock/mock';
-import { Route, HashRouter as Router } from 'react-router-dom';
+import { Route, HashRouter as Router , Switch, Redirect} from 'react-router-dom';
 import { Provider } from 'react-redux'; 
 import store from './redux/store';
-import App from './pages/App';
 import Loading from './components/Loading/Loading';
+import App from './pages/App';
+import allproduct from './pages/AllProduct/allproduct';
+// import initReactFastclick from 'react-fastclick';
+// initReactFastclick();
+
 // store.subscribe(() =>{
 //     console.log(store.getState())
 // });
@@ -21,7 +25,11 @@ const routes = (
         <div className="index router-view">
         <Loading></Loading>
         <Router>
-            <Route path='/' component={App} />
+            <Switch>
+                <Route path='/allproduct' component={allproduct} />
+                <Route path='/' component={App} />
+                <Redirect to="/home" />
+            </Switch>
         </Router>
         </div>
     </Provider>

@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 import {Link} from 'react-router-dom'
 import './home.less'
-import { Carousel } from 'antd'
+import { Carousel,WingBlank  } from 'antd-mobile'
 import { connect } from 'react-redux'
 import ProList from '../../components/ProList/ProList.js'
-import PropTypes from 'prop-types';
-import { loadingState } from "../../redux/action";
-// import hot from '../../assets/img/home/hot.png'
+import PropTypes from 'prop-types'
+import { loadingState } from "../../redux/action"
+
 class Home extends React.Component{
   constructor(props){
     super(props)
@@ -41,10 +41,13 @@ class Home extends React.Component{
           <div className="btn-login" v-if="!isLogin">
             <Link to="/login">登录</Link>
           </div>
-          <Carousel autoplay>
+          <Carousel 
+          autoplay
+          infinite
+          >
             {this.state.list.map((item,key)=>(
               <div className="slider-content" key={key}>
-                 {/* <img src={item.img} width="100%"/> */}
+                 {/* <img src={item.img} width="100%" height="3.68rem" /> */}
                  <div className="content-img" style={{backgroundImage:`url(${item.img})`}}></div>
               </div>
             ))}

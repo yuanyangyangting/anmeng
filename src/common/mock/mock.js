@@ -1,7 +1,7 @@
 import Mock from 'mockjs';
 let Random = Mock.Random
 Mock.setup({
-  timeout: '200-800' // 表示响应时间介于 200 和 600 毫秒之间，默认值是'10-100'。
+  timeout: '800' // 表示响应时间介于 200 和 600 毫秒之间，默认值是'10-100'。
 })
 // 登录
 Mock.mock('/login', (req, res) => {
@@ -92,7 +92,7 @@ Mock.mock('/orderList', {
   //   'prize|1-100.2': 1
   // }]
   data:{
-    "orderList|5":[
+    "orderList|6":[
      {
       'orderCode|+1':1001,
       prodName:() => Random.csentence(5, 8),

@@ -2,7 +2,9 @@
 .bgdiff(@bgImg) {
   background-image: url(@bgImg);
 }
-
+html{
+  line-height: 1.5
+}
 .bgimg(@url) {
   .bgdiff("@{url}@2x.png");
   @media(-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
@@ -59,5 +61,61 @@ ul {
     position: relative;
     flex: 1;
     overflow: hidden;
+  }
+}
+
+.group {
+  margin: 20px 0 0 0;
+  box-sizing: border-box;
+  background: #fff;
+  list-style: none;
+  .cell {
+    list-style: none;
+    width: 100%;
+    padding: 0 30px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    font-size: 32px;
+    box-sizing: border-box;
+    .am-list-content {
+      font-size: 32px;
+      color:#4d4d4d
+    }
+    &.red{
+      .am-list-extra {
+        color:#ce2222
+      }
+    }
+    &.green{
+      .am-list-extra {
+        color:#278e42
+      }
+    }
+    &.orange{
+      .am-list-extra {
+        color:#f67027
+      }
+    }
+    .am-list-extra {
+      font-size: 32px;
+      color:#4d4d4d
+    }
+  }
+  .am-list-item .am-list-line .am-list-arrow{
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.share-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  i {
+    color: #fff;
+    font-size: 50px;
   }
 }

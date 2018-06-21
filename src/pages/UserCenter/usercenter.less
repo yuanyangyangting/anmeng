@@ -1,0 +1,57 @@
+@import '../../assets/css/public.less';
+.red {
+  color: #ce2222
+}
+.user-center {
+  overflow-y: auto;
+  background: #f4f4f4;
+  .user-info {
+    width: 100%;
+    height: 284px;
+    display: flex;
+    flex-flow: row nowrap;
+    box-sizing: border-box;
+    background: url('../../assets/img/user.png') no-repeat center;
+    background-size: cover;
+    padding: 0 50px;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    &--head {
+      width: 177px;
+      height: 177px;
+      border-radius: 177px;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #fff;
+    }
+    &--name {
+      .name {
+        font-size: 36px;
+      }
+      .tel {
+        font-size: 28px;
+      }
+    }
+    &--jump {
+      i {
+        font-size: 36px;
+      }
+    }
+  }
+  .logout {
+    margin-top: 20px;
+    .red;
+    text-align: center;
+    font-size: 34px;
+    background: #fff;
+    padding: 0 30px;
+    height: 100px;
+    line-height: 100px;
+    &:active {
+      background: #f4f4f4
+    }
+  }
+}

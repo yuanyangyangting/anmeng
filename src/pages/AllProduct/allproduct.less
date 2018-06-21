@@ -1,0 +1,62 @@
+@import '../../assets/css/public.less';
+.product {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  &-list {
+    flex: 1;
+  }
+  &-card {
+    &--item {
+      display: flex;
+      flex-flow: row nowrap;
+      background: #fff;
+      margin: 20px 0;
+      height: 215px;
+      padding: 24px;
+      box-sizing: border-box;
+      &:active {
+        background: #f3f3f3;
+      }
+      &__left {
+        width: 227px;
+        height: 167px;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: #4d4d4d;
+      }
+      &__center {
+        flex: 1;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+        padding: 0 24px;
+        .title {
+          h3 {
+            font-size: 32px;
+            margin-bottom: 14px;
+            color: #333;
+          }
+          p {
+            font-size: 26px;
+            color: #999;
+          }
+        }
+        .prize {
+          font-size: 32px;
+          color: #e95233;
+        }
+      }
+      &__right {
+        width: 100px;
+        line-height: 167px;
+        text-align: center;
+        i {
+          font-size: 38px;
+          color: #999;
+        }
+      }
+    }
+  }
+}

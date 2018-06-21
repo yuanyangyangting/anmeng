@@ -39,7 +39,6 @@ class App extends React.Component{
                 <Route path="/home" component={Home}></Route>
                 <Route path="/myOrder" component={myOrder}></Route>
                 <Route path="/userCenter" component={userCenter}></Route>
-                <Redirect to="/home" />
             </Switch>
             </div>
             <NavBar active={this.state.path} navList={navList}></NavBar>
