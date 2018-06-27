@@ -27,7 +27,7 @@ class MyOrder extends React.Component {
     this.setState({
       scrollHeight: height
     }, () => {
-      this.getDate(1);
+      this.getData(1);
     })
 
     // console.log()
@@ -37,7 +37,7 @@ class MyOrder extends React.Component {
       active: key,
       ...this.stateInit()
     }, () => {
-      this.getDate(1, () => {
+      this.getData(1, () => {
         this.refs.scroller.reSet()
       })
     })
@@ -54,13 +54,13 @@ class MyOrder extends React.Component {
     this.setState({
       page: this.state.page + 1
     }, () => {
-      this.getDate(this.state.page);
+      this.getData(this.state.page);
     })
   }
   search(value) {
     console.log(value)
   }
-  getDate(page = 1, cb = () => { }) {
+  getData(page = 1, cb = () => { }) {
     let data = { page: page, orderType: this.state.active + 1, screen: this.state.screen };
     window.$http(window.$api.orderList, data).then(res => {
       if (!res.data.data.orderList.length) {

@@ -16,8 +16,8 @@ config['optimization'] = {
 config.mode = 'production'
 config.plugins.push(
   new MiniCssExtractPlugin({
-    filename: '/css/[name].[hash].css',
-    chunkFilename: '/css/[id].[hash].css',
+    filename: './css/[name].[hash].css',
+    chunkFilename: './css/[id].[hash].css',
   })
 )
 config.module.rules.push({
@@ -27,7 +27,7 @@ config.module.rules.push({
     {
       loader: 'css-loader',
       options: {
-        modules: true
+        modules: false
       }
     },
     {
@@ -44,7 +44,7 @@ config.module.rules.push({
       options: { javascriptEnabled: true }
     }
   ],
-  exclude: /node_modules/
+  // exclude: /node_modules/
 }, )
 
 module.exports = config

@@ -7,11 +7,11 @@ class Tab extends React.Component {
     super(props)
     this.state = {
       sliderWidth: 0,
-      sliderLeft: 0,
+      sliderLeft: 0
     }
 
     this.tabList = this.props.tabList
-    this.sliderBarWidth = '1rem';
+    this.sliderBarWidth = this.props.sliderBarWidth;
   }
   componentDidMount() {
     this.setState({
@@ -48,6 +48,8 @@ class Tab extends React.Component {
   }
 }
 Tab.defaultProps = {
-  active: 0
+  active: 0,
+  sliderBarWidth:'10vw',
+  tabChange:(key)=>{}
 }
 export default Tab

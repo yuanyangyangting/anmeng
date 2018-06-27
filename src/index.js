@@ -1,5 +1,5 @@
 import './assets/css/reset.less';
-import 'lib-flexible/flexible.js'
+import 'amfe-flexible/index.js'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import http from './common/http/http.js'
@@ -11,6 +11,7 @@ import store from './redux/store.js';
 import Loading from './components/Loading/Loading.jsx';
 import App from './pages/App.jsx';
 import allproduct from './pages/AllProduct/allproduct.jsx';
+import login from './pages/Login/Login.jsx';
 
 // import initReactFastclick from 'react-fastclick';
 // initReactFastclick();
@@ -26,6 +27,7 @@ const routes = (
         <Loading></Loading>
         <Router>
             <Switch>
+                <Route path='/login' component={login} />
                 <Route path='/allproduct' component={allproduct} />
                 <Route path='/' component={App} />
             </Switch>

@@ -27,11 +27,29 @@ ul {
   box-sizing: content-box
 }
 
-#app {
-  // overflow-y: auto;
-  // .container{}
+.ov_1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
 }
 
+.ov_2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+
+.ov_3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
 .router-view {
   position: absolute;
   left: 0;
@@ -117,5 +135,21 @@ ul {
   i {
     color: #fff;
     font-size: 50px;
+  }
+}
+
+#app{
+  .am-list-item.am-input-item{
+    height: 90px;
+  }
+  .am-list-item .am-input-control,.am-list-item .am-input-control input{
+    font-size: 28px;
+  }
+  .am-list-item.am-input-error .am-input-error-extra{
+    width: 32px;
+    height: 32px;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center
   }
 }

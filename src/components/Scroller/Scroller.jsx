@@ -21,7 +21,7 @@ class Scroller extends React.Component {
     this.touchEnd = this.touchEnd.bind(this)
   }
   componentDidMount() {
-
+    
   }
   touchStart(event) {
     event.preventDefault();
@@ -61,14 +61,16 @@ class Scroller extends React.Component {
     })
   }
   loading() {
-    if (this.state.moveY <= -(this.state.contentHeight - this.props.height + 10)) {
+    let pos = this.state.contentHeight >= this.props.height?-(this.state.contentHeight - this.props.height + 10):-50
+    if (this.state.moveY <= pos) {
       this.props.onScrollToBottom()
     }
   }
   fallBack() {
     if (this.state.moveY > 0 || this.state.moveY <= -(this.state.contentHeight - this.props.height + 50)) {
+      let moveY = this.state.moveY > 0 || this.state.contentHeight<this.props.height ? 0 : -(this.state.contentHeight - this.props.height + 50);
       this.setState({
-        moveY: this.state.moveY > 0 ? 0 : -(this.state.contentHeight - this.props.height + 50),
+        moveY: moveY,
         animate: true
       })
     }

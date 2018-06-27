@@ -5,7 +5,7 @@ import { Carousel, WingBlank } from 'antd-mobile'
 import { connect } from 'react-redux'
 import ProList from '../../components/ProList/ProList.jsx'
 import PropTypes from 'prop-types'
-import { loadingState } from "../../redux/action.js"
+import { loadingState, setActive } from "../../redux/action.js"
 
 class Home extends React.Component {
   constructor(props) {
@@ -34,6 +34,11 @@ class Home extends React.Component {
       }
     })
   }
+  jumpTo(key){
+    this.props.setActive(key)
+    // this.props.location.push('/allproduct')
+    this.props.history.push('/allproduct')
+  }
   render() {
     return (
       <div className="home router-view">
@@ -54,24 +59,24 @@ class Home extends React.Component {
           </Carousel>
         </div>
         <section className="home--block">
-          <Link to="/" className="home--block__left">
+          <div onClick={this.jumpTo.bind(this,2)} className="home--block__left">
             <p className="block-title">意外险</p>
             <p className="block-desc">意外保障高达百万</p>
-          </Link>
+          </div>
           <div className="home--block__right">
-            <Link to="/" className="block--right__top">
+            <div onClick={this.jumpTo.bind(this,3)} className="block--right__top">
               <p className="block-title">旅游险</p>
               <p className="block-desc">旅游有保证</p>
-            </Link>
+            </div>
             <div className="block--right__bottom">
-              <Link to="/" className="right--bottom__left">
+              <div onClick={this.jumpTo.bind(this,4)} className="right--bottom__left">
                 <p className="block-title">财产险</p>
-              </Link>
-              <Link to="/" className="right--bottom__right">
+              </div>
+              <div onClick={this.jumpTo.bind(this,1)} className="right--bottom__right">
                 <p className="block-title">更多
                   <i className="iconfont icon-right"></i>
                 </p>
-              </Link>
+              </div>
             </div>
           </div>
         </section>
@@ -93,6 +98,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     loading: () => dispatch(loadingState(true)),
     unLoading: () => dispatch(loadingState(false)),
+    setActive: (key) => dispatch(setActive(key)),
   }
 };
 
